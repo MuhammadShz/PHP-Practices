@@ -10,7 +10,7 @@ $result = mysqli_query($conn, $query);
 if($result){
     echo "<script>alert('data is deleted successfully')</script>"
 ?>
-    <meta http-equiv="refresh" content="0; url=http://localhost/test/read.php">
+    <meta http-equiv="refresh" content="0; url=http://localhost/project_crud/read.php">
 <?php
 }
 else{
