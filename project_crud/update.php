@@ -46,7 +46,7 @@ $result = mysqli_query($conn, $query);
 if($result){
     ?>
     <script>alert('data is updated')</script>
-    <meta http-equiv="refresh" content="0; url=http://localhost/test/read.php">
+    <meta http-equiv="refresh" content="0; url=http://localhost/project_crud/read.php">
     <?php
 }
 else{
