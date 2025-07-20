@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
         
         ?>
-        <meta http-equiv="refresh" content="0; url=http://localhost/test/read.php">
+        <meta http-equiv="refresh" content="0; url=http://localhost/project_crud/read.php">
         <?php
     }
     else{
