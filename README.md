@@ -85,16 +85,19 @@ project-folder/
 ## 📸 Screenshots
 
 - CREATE OPERATION
-- <img width="394" height="221" alt="image" src="https://github.com/user-attachments/assets/fad16147-26fb-4446-b89d-6566f504ff11" />
+- <img width="1360" height="633" alt="image" src="https://github.com/user-attachments/assets/509693f0-f93a-45fc-801c-96255ce9fc76" />
 - READ OPERATION
-- <img width="890" height="401" alt="image" src="https://github.com/user-attachments/assets/6b20eb4a-1d1c-4223-b8bf-f9a7a568a724" />
+- <img width="1354" height="566" alt="image" src="https://github.com/user-attachments/assets/ee8b65e7-bb7b-4257-8135-d6ec9d7067f8" />
 - UPDATE OPERATION
-- <img width="402" height="260" alt="image" src="https://github.com/user-attachments/assets/c73bd062-10cb-411d-9522-b892be230870" />
+- <img width="1222" height="626" alt="image" src="https://github.com/user-attachments/assets/a7429f49-01ab-4c1f-93c8-15307d8ca12c" />
+- After updating data. The data will be displayed on the page
+- <img width="1366" height="511" alt="image" src="https://github.com/user-attachments/assets/7c55f61f-a636-48b8-a7bd-39468ea92563" />
 - DELETE OPERATION
 - After clicking on the delete button
-- <img width="894" height="536" alt="image" src="https://github.com/user-attachments/assets/ebd1a431-7f4c-41aa-b6d4-9c2aa819c35c" />
+- <img width="1360" height="478" alt="image" src="https://github.com/user-attachments/assets/94e0b850-7a53-4317-821f-cbd8221277c5" />
 - After confirming ok
-- <img width="886" height="589" alt="image" src="https://github.com/user-attachments/assets/d55e3442-566e-4497-b633-3aa42fbb2f29" />
+- <img width="1323" height="395" alt="image" src="https://github.com/user-attachments/assets/e80f648f-22c5-44f0-b092-77acda742211" />
+
 
 
 
