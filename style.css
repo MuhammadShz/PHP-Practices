@@ -1,0 +1,166 @@
+/* Global Reset & Body Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(150deg, #74ebd5, #9face6);
+  font-family: "Segoe UI", sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+/* Container to center the form */
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+/* Form styling */
+.custom-form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+/* Heading */
+.custom-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #444;
+}
+
+/* Floating label fields */
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 12px 12px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  background: transparent;
+  transition: all 0.3s;
+  font-size: 16px;
+}
+
+.form-group label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: white;
+  color: #666;
+  padding: 0 5px;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+/* Floating effect */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group select:focus + label,
+.form-group select:not([value=""]) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 13px;
+  color: #8e44ad;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: #8e44ad;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #6c3483;
+}
+
+/* Simple animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+textarea {
+  width: 100%;
+  height: 50px;
+}
+
+.radio_btn,
+.checkbox-btn {
+  display: flex;
+  gap: 50px;
+}
+.checkbox-btn {
+  gap: 32px;
+}
+.radio_btn p,
+.checkbox-btn p,
+.image-field label {
+  color: #8e44ad;
+}
+
+.option-group label,
+.checkbox-btn label {
+  margin-right: 10px;
+}
+
+.option-group label,
+input,
+.checkbox-btn label input {
+  cursor: pointer;
+}
+
+.image-field {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-field input {
+  margin-left: 30px;
+}
+
+.image-field div {
+  display: inline-flex;
+  border: 1px dashed gray;
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  color: rgb(167, 163, 163);
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.image-field img {
+  max-width: 100%; /* Image won't be wider than div */
+  max-height: 100%; /* Image won't be taller than div */
+  object-fit: cover; /* Keep aspect ratio and stay within box */
+}
