@@ -19,8 +19,6 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
 $languages_array = explode(",", $row["languages"]);
-
-
 ?>
 
 <div class="form-container">
@@ -29,9 +27,11 @@ $languages_array = explode(",", $row["languages"]);
 
         <div class="image-field">
             <label for="name">Upload Image: </label>
-            <input type="file" name="myfile" required id="fileInput">
-            <div id="preview"><img src="<?php echo $row['stu_image'] ?>" alt="Image Preview" height="100px"
+            <input type="file" name="myfile" id="fileInput">
+            <div id="preview"><img src="images/<?php echo $row['stu_image'] ?>" alt="Image Preview" height="100px"
                     width="100px"></div>
+            <!-- hidden input field to store old image value -->
+            <input type="hidden" name="old_image" value="<?php echo $row['stu_image']; ?>">
         </div>
 
         <div class="form-group">
@@ -131,10 +131,16 @@ $languages_array = explode(",", $row["languages"]);
 if (isset($_POST['submit'])) {
 
     // file or image upload logic
-    $filename = $_FILES["myfile"]["name"];
-    $tempname = $_FILES["myfile"]["tmp_name"];
-    $folder = "images/" . $filename;
-    move_uploaded_file($tempname, $folder);
+
+    $oldImage = $_POST['old_image'];
+    
+    if ($_FILES['myfile']['name'] != "") {
+        $new_image = $_FILES['myfile']['name'];
+        $tmp = $_FILES['myfile']['tmp_name'];
+        move_uploaded_file($tmp, "images/" . $new_image);
+    } else {
+        $new_image = $oldImage;
+    }
 
 
     $name = $_POST["name"];
@@ -151,7 +157,7 @@ if (isset($_POST['submit'])) {
 
 
     $query = $query = "UPDATE student SET 
-            stu_image = '$folder',
+            stu_image = '$new_image',
             name = '$name', 
             age = '$age', 
             password = '$pwd',

@@ -42,7 +42,7 @@
       while ($row = mysqli_fetch_assoc($data)) {
         echo "<tr>
                 <td>{$row['id']}</td>
-                <td>'<img src={$row['stu_image']} height='100px' width='100px' style='filter: drop-shadow(10px 10px 15px rgba(0,0,0,0.4))'>'</td>
+                <td>'<img src=images/{$row['stu_image']} height='100px' width='100px' style='filter: drop-shadow(10px 10px 15px rgba(0,0,0,0.4))'>'</td>
                 <td>{$row['name']}</td>
                 <td>{$row['age']}</td>
                 <td>{$row['password']}</td>
