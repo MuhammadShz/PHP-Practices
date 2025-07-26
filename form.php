@@ -25,12 +25,12 @@
       </div>
 
       <div class="form-group">
-        <input type="number" name="age" id="age" required />
+        <input type="number" name="age" id="age" min="0" required />
         <label for="age">Age</label>
       </div>
 
       <div class="form-group">
-        <input type="password" name="pass" id="pass" required />
+        <input type="password" name="pass" id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" title="Password must be at least 8 characters and include uppercase, lowercase, number, and special character" required />
         <label for="pass">Password</label>
       </div>
 

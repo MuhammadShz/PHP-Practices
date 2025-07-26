@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+  header("Location: login.php");
+  exit();
+}
+
+include("connect.php");
+?>
+
+
+
+
 <!-- read.php -->
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +24,16 @@
 <body>
 
   <div class="container">
-    <h2>All User Data</h2>
+    <div class="user_loggedin">
+      <a href="logout.php" class="logout-btn">
+        <input type="button" value="LOGOUT">
+      </a>
+      <img src="" alt="" width="50px" height="50px" class="user_image">
+    </div>
 
+    <h2>All User Data</h2>
     <?php
-    include("connect.php");
+
     $query = "SELECT * FROM student";
     $data = mysqli_query($conn, $query);
     $total_rows = mysqli_num_rows($data);
@@ -40,9 +59,16 @@
 
 
       while ($row = mysqli_fetch_assoc($data)) {
+
+        $imageFile = $row["stu_image"];
+        //  echo $imageFile. "<br><br>";
+        if (!str_starts_with($imageFile, "images/")) {
+          $imageFile = "images/" . $imageFile;
+        }
+        // echo $imageFile;
         echo "<tr>
                 <td>{$row['id']}</td>
-                <td>'<img src=images/{$row['stu_image']} height='100px' width='100px' style='filter: drop-shadow(10px 10px 15px rgba(0,0,0,0.4))'>'</td>
+                <td>'<img src={$imageFile} height='100px' width='100px' style='filter: drop-shadow(10px 10px 15px rgba(0,0,0,0.4))'>'</td>
                 <td>{$row['name']}</td>
                 <td>{$row['age']}</td>
                 <td>{$row['password']}</td>
@@ -69,6 +95,12 @@
     function deleteData() {
       return confirm("Are you sure you want to delete this data?");
     }
+
+
+  const userImage = document.getElementsByClassName('user_image')[0];
+  userImage.src = `<?php echo $imageFile; ?>`;
+
+
   </script>
 
 

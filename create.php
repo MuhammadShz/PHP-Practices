@@ -16,8 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $city = $_POST["city"];
     $gender = $_POST["gender"];
     $religion = $_POST["religion"];
-    $langs = $_POST["languages"];
-    $languages_string = implode(",", $langs);
+    if(isset($_POST['languages'])) {
+        $langs = $_POST["languages"];
+        $languages_string = implode(",", $langs);
+    }
+    else{
+        $languages_string = "Other";
+    }
+   
     $address = $_POST["address"];
 
 

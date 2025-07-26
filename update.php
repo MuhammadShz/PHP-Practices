@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+    header("Location: login.php");
+    exit();
+}
+
+error_reporting(0);
+?>
+
 <html lang="en">
 
 <head>
@@ -19,6 +29,15 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
 $languages_array = explode(",", $row["languages"]);
+
+
+
+// Imagae URL testing
+$imageFile = $row["stu_image"];
+if (!str_starts_with($imageFile, "images/")) {
+    $imageFile = "images/" . $imageFile;
+}
+
 ?>
 
 <div class="form-container">
@@ -28,10 +47,10 @@ $languages_array = explode(",", $row["languages"]);
         <div class="image-field">
             <label for="name">Upload Image: </label>
             <input type="file" name="myfile" id="fileInput">
-            <div id="preview"><img src="images/<?php echo $row['stu_image'] ?>" alt="Image Preview" height="100px"
-                    width="100px"></div>
+            <div id="preview"><img src="<?php echo $imageFile; ?>" alt="Image Preview" height="100px" width="100px">
+            </div>
             <!-- hidden input field to store old image value -->
-            <input type="hidden" name="old_image" value="<?php echo $row['stu_image']; ?>">
+            <input type="hidden" name="old_image" value="<?php echo $imageFile; ?>">
         </div>
 
         <div class="form-group">
@@ -40,12 +59,14 @@ $languages_array = explode(",", $row["languages"]);
         </div>
 
         <div class="form-group">
-            <input type="number" name="age" id="age" value="<?php echo $row['age']; ?>" required />
+            <input type="number" name="age" id="age" min="0" value="<?php echo $row['age']; ?>" required />
             <label for="age">Age</label>
         </div>
 
         <div class="form-group">
-            <input type="password" name="pass" id="pass" value="<?php echo $row['password']; ?>" required />
+            <input type="password" name="pass" id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
+                title="Password must be at least 8 characters and include uppercase, lowercase, number, and special character"
+                value="<?php echo $row['password']; ?>" required />
             <label for="pass">Password</label>
         </div>
 
@@ -133,7 +154,7 @@ if (isset($_POST['submit'])) {
     // file or image upload logic
 
     $oldImage = $_POST['old_image'];
-    
+
     if ($_FILES['myfile']['name'] != "") {
         $new_image = $_FILES['myfile']['name'];
         $tmp = $_FILES['myfile']['tmp_name'];
@@ -149,8 +170,13 @@ if (isset($_POST['submit'])) {
     $city = $_POST["city"];
     $gender = $_POST["gender"];
     $religion = $_POST["religion"];
-    $langs = $_POST["languages"];
-    $languages_updated = implode(",", $langs);
+    if (isset($_POST['languages'])) {
+        $langs = $_POST["languages"];
+        $languages_updated = implode(",", $langs);
+    } else {
+        $languages_updated = "Other";
+    }
+
     $address = $_POST["address"];
 
 
@@ -173,6 +199,9 @@ if (isset($_POST['submit'])) {
 
     if ($res) {
         ?>
+        <!-- Put this line into alter() message to check the values of these variables if you face any problem while fetching image/file data from database and while updating them. -->
+        <!-- code: -->
+        <!-- echo "imagefile:" . $imageFile . "Old_Image: " . $oldImage . "new_Image:" . $new_image;  -->
         <script>alert('data is updated')</script>
         <meta http-equiv="refresh" content="0; url=http://localhost/project_crud/read.php">
         <?php
